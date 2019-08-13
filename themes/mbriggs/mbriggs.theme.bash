@@ -18,17 +18,16 @@ function git_short_sha() {
 
 function prompt() {
     local return_status=""
-    local ruby="${red}$(ruby_version_prompt)${reset_color}"
     local user_host="${green}\h${reset_color}"
-    local current_path="\w"
+    local current_path="${red}\w${reset_color}"
     local n_commands="\!"
     local git_branch="$(git_short_sha)$(scm_prompt_info)"
-    local prompt_symbol='λ'
+    local prompt_symbol=👽
     local open='('
     local close=')'
-    local prompt_char=' \$ '
+    local prompt_char='o-> '
 
-    PS1="\n${n_commands} ${user_host} ${prompt_symbol} ${ruby} ${open}${current_path}${git_branch}${close}${return_status}\n${prompt_char}"
+    PS1="\n${user_host} ${prompt_symbol} ${open}${current_path}${git_branch}${close}${return_status}\n⏅ → "
 }
 
 safe_append_prompt_command prompt
